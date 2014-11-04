@@ -1,38 +1,51 @@
-#include <avr/power.h>
+/*
+ * Pin Change Interrupt Example
+ * Version: 1.0
+ * Author: Alex from Inside Gadgets (http://www.insidegadgets.com)
+ * Created: 25/02/2011
+ *
+ * Demonstration of the pin change interrupt
+ * LED on digital pin 0
+ * Interrupt on digital pin 1
+ * 10k resistor on digital pin 1 to GND
+ *
+ */
+ 
 #include <avr/sleep.h>
 
-int ledPin = 4;
+#ifndef cbi
+#define cbi(sfr, bit) (_SFR_BYTE(sfr) &= ~_BV(bit))
+#endif
+#ifndef sbi
+#define sbi(sfr, bit) (_SFR_BYTE(sfr) |= _BV(bit))
+#endif
 
-void setup() {
-    pinMode(ledPin,OUTPUT);
-    power_timer0_disable();    // Disable Timer 0 (affects delay function)
-    power_timer1_disable();    // Disable Timer 1
-    power_adc_disable();       // to save power
-    PCMSK |= _BV(PCINT1);      // Set change mask for pin 1
+int pinLed = 4;
+
+void setup(){
+  pinMode(pinLed,OUTPUT);
+  pinMode(1,INPUT);
+  
+  sbi(GIMSK,PCIE); // Turn on Pin Change interrupt
+  sbi(PCMSK,PCINT1); // Which pins are affected by the interrupt
 }
 
-bool awaken = false; 
+void loop(){
+  digitalWrite(pinLed,HIGH); 
+  delay(1000);
+  digitalWrite(pinLed,LOW);
 
-void loop() {
-  if(!awaken) {             // If last cycle...
-    // Execution resumes here on wake.
-    GIMSK = _BV(PCIE);     // Enable pin change interrupt
-    power_all_disable();   // All peripherals off
-    set_sleep_mode(SLEEP_MODE_PWR_DOWN);
-    sleep_enable();
-    sei();                 // Keep interrupts disabled
-    digitalWrite(ledPin,HIGH);
-    awaken = true;
-    sleep_mode();          // Power down CPU (pin 1 will wake)
-    GIMSK = 0;             // Disable pin change interrupt
-    PCMSK = 0;             // Disable pin change interrupt
-  } else {
-    power_timer0_enable(); // Re-enable timer
-    //power_all_enable();    // Re-enable USI
-    digitalWrite(ledPin,LOW);
-    delay(1000);
-    digitalWrite(ledPin,HIGH);
-    delay(1000);
-  }
-
+  system_sleep();
 }
+
+// From http://interface.khm.de/index.php/lab/experiments/sleep_watchdog_battery/
+void system_sleep() {
+  cbi(ADCSRA,ADEN); // Switch Analog to Digital converter OFF
+  set_sleep_mode(SLEEP_MODE_PWR_DOWN); // Set sleep mode
+  sleep_mode(); // System sleeps here
+  sbi(ADCSRA,ADEN);  // Switch Analog to Digital converter ON
+}
+
+ISR(PCINT0_vect) {
+}
+
