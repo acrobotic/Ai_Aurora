@@ -1,0 +1,8 @@
+For micronucleus:
+
+1. Install CrossPack
+2. cd into micronucleus releases
+3. /usr/local/CrossPack-AVR/bin/avrdude -c avrispmkii -p t85 -U flash:w:micronucleus-1.11.hex
+From Trinket 16MH I had thse fuse settings:z
+avrdude: safemode: Fuses OK (H:FE, E:D5, L:F1)
+e.g., "avrdude -c usbtiny -p t85 -U lfuse:w:0xf1:m -U efuse:w:0xfe:m -U hfuse:w:0x5f:m"
