@@ -20,22 +20,49 @@
 #define sbi(sfr, bit) (_SFR_BYTE(sfr) |= _BV(bit))
 #endif
 
-int pinLed = 4;
+uint8_t dPinLed = 4;
+uint8_t aPinPwr = 1;
+uint8_t aPinLdr = 0;
+uint16_t threshold = 1000;
 
 void setup(){
-  pinMode(pinLed,OUTPUT);
-  pinMode(1,INPUT);
+  pinMode(dPinLed,OUTPUT);
+  pinMode(aPinLdr,INPUT);
+  pinMode(aPinPwr,INPUT); //A1
   
-  sbi(GIMSK,PCIE); // Turn on Pin Change interrupt
+  sbi(GIMSK,PCIE);   // Turn on Pin Change interrupt
   sbi(PCMSK,PCINT1); // Which pins are affected by the interrupt
 }
 
-void loop(){
-  digitalWrite(pinLed,HIGH); 
-  delay(1000);
-  digitalWrite(pinLed,LOW);
+int value = 0;
+bool sleeping = true;
+bool powered  = false;
 
-  system_sleep();
+void loop(){
+  if (sleeping)
+  {
+    system_sleep();
+    //sleeping = false;
+  }
+
+  value = analogRead(aPinPwr);
+  if (value >= threshold)
+    powered = true;
+  else
+  {
+    sleeping = true;
+    powered = false;
+  }
+
+  while( (!sleeping)&&(powered) )
+  {
+    digitalWrite(dPinLed,HIGH); 
+    delay(1000);
+    digitalWrite(dPinLed,LOW);
+    delay(1000);
+    //cbi(PCMSK,PCINT1); // Which pins are affected by the interrupt
+    //cbi(GIMSK,PCIE); // Turn off Pin Change interrupt
+  }
 }
 
 // From http://interface.khm.de/index.php/lab/experiments/sleep_watchdog_battery/
@@ -47,5 +74,6 @@ void system_sleep() {
 }
 
 ISR(PCINT0_vect) {
+  sleeping = !sleeping;
 }
 
