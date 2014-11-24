@@ -8,7 +8,9 @@
 #include <avr/power.h>
 #include <Adafruit_NeoPixel.h>
 
+#define PIN 4
 
+Adafruit_NeoPixel strip = Adafruit_NeoPixel(2, PIN, NEO_GRB + NEO_KHZ800);
 
 #ifndef cbi
 #define cbi(sfr, bit) (_SFR_BYTE(sfr) &= ~_BV(bit))
@@ -16,23 +18,11 @@
 #ifndef sbi
 #define sbi(sfr, bit) (_SFR_BYTE(sfr) |= _BV(bit))
 #endif
-// From http://interface.khm.de/index.php/lab/experiments/sleep_watchdog_battery/
-//cbi(ADCSRA,ADEN); // Switch Analog to Digital converter OFF
-//sbi(ADCSRA,ADEN);  // Switch Analog to Digital converter ON
 
 uint8_t dPinLedPwr = 3;
 uint8_t dPinLedData = 4;
 uint8_t aPinPwr = 1;
 uint8_t aPinLdr = 0;
-
-uint16_t pwrMin = 1000;
-uint16_t ldrMin = 800;
-bool sleeping = true;
-bool powered  = false;
-bool running = false;
-int numCycles = 0;
-
-Adafruit_NeoPixel strip = Adafruit_NeoPixel(2, dPinLedData, NEO_GRB + NEO_KHZ800);
 
 void setup(){
   pinMode(dPinLedData,INPUT);
@@ -46,6 +36,11 @@ void setup(){
   sbi(PCMSK,PCINT1); // Which pins are affected by the interrupt
 }
 
+uint16_t pwrMin = 1000;
+uint16_t ldrMin = 800;
+bool sleeping = true;
+bool powered  = false;
+int numCycles = 0;
 void loop(){
   if (sleeping)
     system_sleep();
@@ -58,19 +53,18 @@ void loop(){
     powered = false;
   }
   
-  //while( (!sleeping)&&(powered) )
-  while(1)
+  while( (!sleeping)&&(powered) )
   {
     rainbow(20);
     rainbowCycle(20);
     theaterChaseRainbow(50);
-    //if (analogRead(aPinPwr) < pwrMin)
-    //  powered = false;
-    //if (analogRead(aPinLdr) < ldrMin)
-    //  sleeping = true;
-    //numCycles++;
-    //if(numCycles == 1000)
-    //  break;
+    if (analogRead(aPinPwr) < pwrMin)
+      powered = false;
+    if (analogRead(aPinLdr) < ldrMin)
+      sleeping = true;
+    numCycles++;
+    if(numCycles == 1000)
+      break;
   }
   numCycles = 0;
 }
@@ -132,7 +126,9 @@ uint32_t Wheel(byte WheelPos) {
   }
 }
 
+// From http://interface.khm.de/index.php/lab/experiments/sleep_watchdog_battery/
 void system_sleep() {
+  //cbi(ADCSRA,ADEN); // Switch Analog to Digital converter OFF
   pinMode(dPinLedPwr, INPUT);
   pinMode(dPinLedData, INPUT);
   power_adc_disable();
@@ -146,17 +142,14 @@ void system_sleep() {
 }
 
 ISR(PCINT0_vect) {
-  if(!running) 
-  {
-    running = true;
-    power_adc_enable();
-    power_timer0_enable();
-    power_timer1_enable();
-    pinMode(dPinLedPwr, OUTPUT);
-    pinMode(dPinLedData, OUTPUT);
-    digitalWrite(dPinLedPwr, HIGH);
-    sleeping = false;
-    cbi(PCMSK,PCINT1); // Which pins are affected by the interrupt
-    cbi(GIMSK,PCIE); // Turn off Pin Change interrupt
-  }
+  //sbi(ADCSRA,ADEN);  // Switch Analog to Digital converter ON
+  power_adc_enable();
+  power_timer0_enable();
+  power_timer1_enable();
+  pinMode(dPinLedPwr, OUTPUT);
+  pinMode(dPinLedData, OUTPUT);
+  digitalWrite(dPinLedPwr, HIGH);
+  sleeping = false;
+  cbi(PCMSK,PCINT1); // Which pins are affected by the interrupt
+  cbi(GIMSK,PCIE); // Turn off Pin Change interrupt
 }
