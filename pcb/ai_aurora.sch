@@ -160,6 +160,11 @@
 <layer number="222" name="222bmp" color="23" fill="1" visible="no" active="no"/>
 <layer number="223" name="223bmp" color="24" fill="1" visible="no" active="no"/>
 <layer number="224" name="224bmp" color="25" fill="1" visible="no" active="no"/>
+<layer number="225" name="225bmp" color="7" fill="1" visible="no" active="yes"/>
+<layer number="226" name="226bmp" color="7" fill="1" visible="no" active="yes"/>
+<layer number="227" name="227bmp" color="7" fill="1" visible="no" active="yes"/>
+<layer number="228" name="228bmp" color="7" fill="1" visible="no" active="yes"/>
+<layer number="230" name="230bmp" color="7" fill="1" visible="no" active="yes"/>
 <layer number="248" name="Housing" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="249" name="Edge" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="250" name="Descript" color="7" fill="1" visible="no" active="no"/>
@@ -14785,6 +14790,24 @@ Standard 8.5x11 US Letter frame</description>
 This library includes digital and analog Integrated Circuits such as MCUs, shift registers, etc. (Excludes power ICs such as regulators, and RF ICs such as Wi-Fi and Bluetooth)
 &lt;/p&gt;</description>
 <packages>
+<package name="DIL08">
+<description>&lt;b&gt;Dual In Line Package&lt;/b&gt;</description>
+<wire x1="5.08" y1="2.921" x2="-5.08" y2="2.921" width="0.1524" layer="21"/>
+<wire x1="-5.08" y1="-2.921" x2="5.08" y2="-2.921" width="0.1524" layer="21"/>
+<wire x1="5.08" y1="2.921" x2="5.08" y2="-2.921" width="0.1524" layer="21"/>
+<wire x1="-5.08" y1="2.921" x2="-5.08" y2="1.016" width="0.1524" layer="21"/>
+<wire x1="-5.08" y1="-2.921" x2="-5.08" y2="-1.016" width="0.1524" layer="21"/>
+<wire x1="-5.08" y1="1.016" x2="-5.08" y2="-1.016" width="0.1524" layer="21" curve="-180"/>
+<pad name="1" x="-3.81" y="-3.81" drill="0.8128" diameter="1.27" shape="long" rot="R90"/>
+<pad name="2" x="-1.27" y="-3.81" drill="0.8128" diameter="1.27" shape="long" rot="R90"/>
+<pad name="7" x="-1.27" y="3.81" drill="0.8128" diameter="1.27" shape="long" rot="R90"/>
+<pad name="8" x="-3.81" y="3.81" drill="0.8128" diameter="1.27" shape="long" rot="R90"/>
+<pad name="3" x="1.27" y="-3.81" drill="0.8128" diameter="1.27" shape="long" rot="R90"/>
+<pad name="4" x="3.81" y="-3.81" drill="0.8128" diameter="1.27" shape="long" rot="R90"/>
+<pad name="6" x="1.27" y="3.81" drill="0.8128" diameter="1.27" shape="long" rot="R90"/>
+<pad name="5" x="3.81" y="3.81" drill="0.8128" diameter="1.27" shape="long" rot="R90"/>
+<text x="-5.334" y="-2.921" size="1.27" layer="25" font="vector" ratio="10" rot="R90">&gt;NAME</text>
+</package>
 <package name="SO08-EIAJ">
 <wire x1="-2.362" y1="-2.565" x2="2.362" y2="-2.565" width="0.1524" layer="51"/>
 <wire x1="2.362" y1="-2.565" x2="2.362" y2="2.5396" width="0.1524" layer="21"/>
@@ -14807,29 +14830,7 @@ This library includes digital and analog Integrated Circuits such as MCUs, shift
 <rectangle x1="-0.8128" y1="2.5908" x2="-0.4572" y2="3.6068" layer="51"/>
 <rectangle x1="0.4572" y1="2.5908" x2="0.8128" y2="3.6068" layer="51"/>
 <rectangle x1="1.7272" y1="2.5908" x2="2.0828" y2="3.6068" layer="51"/>
-<rectangle x1="-2.032" y1="-5.0165" x2="-1.778" y2="-4.3815" layer="21" rot="R90"/>
-<rectangle x1="-2.032" y1="-5.0165" x2="-1.778" y2="-4.3815" layer="21" rot="R90"/>
-</package>
-<package name="DIL08">
-<description>&lt;b&gt;Dual In Line&lt;/b&gt;</description>
-<pad name="1" x="-3.81" y="-3.81" drill="0.762" diameter="1.27" shape="long" rot="R90"/>
-<pad name="2" x="-1.27" y="-3.81" drill="0.762" diameter="1.27" shape="long" rot="R90"/>
-<pad name="3" x="1.27" y="-3.81" drill="0.762" diameter="1.27" shape="long" rot="R90"/>
-<pad name="4" x="3.81" y="-3.81" drill="0.762" diameter="1.27" shape="long" rot="R90"/>
-<pad name="5" x="3.81" y="3.81" drill="0.762" diameter="1.27" shape="long" rot="R90"/>
-<pad name="6" x="1.27" y="3.81" drill="0.762" diameter="1.27" shape="long" rot="R90"/>
-<pad name="7" x="-1.27" y="3.81" drill="0.762" diameter="1.27" shape="long" rot="R90"/>
-<pad name="8" x="-3.81" y="3.81" drill="0.762" diameter="1.27" shape="long" rot="R90"/>
-<text x="-5.715" y="-3.81" size="1.27" layer="25" font="vector" ratio="10" rot="R90">&gt;NAME</text>
-<wire x1="-5.08" y1="-1.27" x2="-5.08" y2="-3.048" width="0.2032" layer="21"/>
-<wire x1="-5.08" y1="-1.27" x2="-5.08" y2="1.27" width="0.2032" layer="21" curve="180"/>
-<wire x1="-5.08" y1="3.048" x2="-5.08" y2="1.27" width="0.2032" layer="21"/>
-<wire x1="-5.08" y1="3.048" x2="-4.826" y2="3.048" width="0.2032" layer="21"/>
-<wire x1="-5.08" y1="-3.048" x2="-4.826" y2="-3.048" width="0.2032" layer="21"/>
-<wire x1="5.08" y1="-3.048" x2="5.08" y2="3.048" width="0.2032" layer="21"/>
-<wire x1="5.08" y1="-3.048" x2="4.826" y2="-3.048" width="0.2032" layer="21"/>
-<wire x1="5.08" y1="3.048" x2="4.826" y2="3.048" width="0.2032" layer="21"/>
-<rectangle x1="-4.318" y1="-5.588" x2="-3.302" y2="-5.334" layer="21"/>
+<rectangle x1="-2.032" y1="-5.1435" x2="-1.778" y2="-4.5085" layer="21" rot="R90"/>
 </package>
 </packages>
 <symbols>
@@ -16254,10 +16255,10 @@ This library includes LEDs of all shapes and sizes.
 <part name="R2" library="Ai_Passives" deviceset="RES" device="AXIAL-0.4" value="100K"/>
 <part name="GND5" library="Ai_Power" deviceset="GND" device=""/>
 <part name="U$2" library="Ai_Power" deviceset="VBAT" device=""/>
-<part name="BAT1" library="Ai_Electromechanical" deviceset="BATTERY-HOLDER" device="CR123A"/>
-<part name="BAT2" library="Ai_Electromechanical" deviceset="BATTERY-HOLDER" device="CR123A"/>
-<part name="C1" library="Ai_Passives" deviceset="CAP" device="025X050"/>
-<part name="C2" library="Ai_Passives" deviceset="CAP" device="025X050"/>
+<part name="BAT1" library="Ai_Electromechanical" deviceset="BATTERY-HOLDER" device="CR123A" value="CR123A"/>
+<part name="BAT2" library="Ai_Electromechanical" deviceset="BATTERY-HOLDER" device="CR123A" value="CR123A"/>
+<part name="C1" library="Ai_Passives" deviceset="CAP" device="025X050" value="0.1uF"/>
+<part name="C2" library="Ai_Passives" deviceset="CAP" device="025X050" value="0.1uF"/>
 <part name="D1" library="Ai_DiscreteSemis" deviceset="DIODE" device="TH-1N914"/>
 <part name="SOLAR-IN" library="Ai_Connectors" deviceset="1X02" device="ST"/>
 <part name="ISP" library="Ai_Connectors" deviceset="2X03" device=""/>
@@ -16310,7 +16311,7 @@ This library includes LEDs of all shapes and sizes.
 <instance part="BAT1" gate="G$1" x="43.18" y="115.57" rot="R180"/>
 <instance part="BAT2" gate="G$1" x="55.88" y="115.57" rot="R180"/>
 <instance part="C1" gate="G$1" x="232.41" y="118.11"/>
-<instance part="C2" gate="G$1" x="240.03" y="118.11"/>
+<instance part="C2" gate="G$1" x="241.3" y="118.11"/>
 <instance part="D1" gate="G$1" x="30.48" y="115.57"/>
 <instance part="SOLAR-IN" gate="G$1" x="20.32" y="113.03" rot="MR180"/>
 <instance part="ISP" gate="G$1" x="135.89" y="121.92" rot="R180"/>
@@ -16345,8 +16346,8 @@ This library includes LEDs of all shapes and sizes.
 <instance part="U$11" gate="G$1" x="26.67" y="118.11"/>
 <instance part="U$12" gate="G$1" x="132.08" y="52.07"/>
 <instance part="GND8" gate="GND" x="142.24" y="40.64"/>
-<instance part="M2" gate="G$1" x="166.37" y="44.45"/>
-<instance part="M3" gate="G$1" x="172.72" y="44.45"/>
+<instance part="M2" gate="G$1" x="135.89" y="6.35"/>
+<instance part="M3" gate="G$1" x="142.24" y="6.35"/>
 </instances>
 <busses>
 </busses>
@@ -16434,8 +16435,6 @@ This library includes LEDs of all shapes and sizes.
 <pinref part="U$7" gate="G$1" pin="VBAT"/>
 <wire x1="119.38" y1="107.95" x2="119.38" y2="110.49" width="0.1524" layer="91"/>
 </segment>
-</net>
-<net name="+" class="0">
 <segment>
 <pinref part="C1" gate="G$1" pin="1"/>
 <wire x1="232.41" y1="123.19" x2="232.41" y2="125.73" width="0.1524" layer="91"/>
@@ -16443,8 +16442,8 @@ This library includes LEDs of all shapes and sizes.
 </segment>
 <segment>
 <pinref part="C2" gate="G$1" pin="1"/>
-<wire x1="240.03" y1="123.19" x2="240.03" y2="125.73" width="0.1524" layer="91"/>
-<label x="240.03" y="125.73" size="1.27" layer="95" font="vector" ratio="10" rot="R180" xref="yes"/>
+<wire x1="241.3" y1="123.19" x2="241.3" y2="125.73" width="0.1524" layer="91"/>
+<label x="241.3" y="125.73" size="1.27" layer="95" font="vector" ratio="10" rot="R180" xref="yes"/>
 </segment>
 <segment>
 <wire x1="218.44" y1="129.54" x2="220.98" y2="129.54" width="0.1524" layer="91"/>
@@ -16633,8 +16632,8 @@ This library includes LEDs of all shapes and sizes.
 </segment>
 <segment>
 <pinref part="C2" gate="G$1" pin="2"/>
-<wire x1="240.03" y1="107.95" x2="240.03" y2="113.03" width="0.1524" layer="91"/>
-<label x="240.03" y="107.95" size="1.27" layer="95" font="vector" ratio="10" xref="yes"/>
+<wire x1="241.3" y1="107.95" x2="241.3" y2="113.03" width="0.1524" layer="91"/>
+<label x="241.3" y="107.95" size="1.27" layer="95" font="vector" ratio="10" xref="yes"/>
 </segment>
 <segment>
 <wire x1="218.44" y1="121.92" x2="223.52" y2="121.92" width="0.1524" layer="91"/>
@@ -16674,6 +16673,16 @@ This library includes LEDs of all shapes and sizes.
 </nets>
 </sheet>
 </sheets>
+<errors>
+<approved hash="101,1,135.89,6.35,M2,1,,,,"/>
+<approved hash="101,1,142.24,6.35,M3,1,,,,"/>
+<approved hash="104,1,38.1,115.57,BAT1,-,VIN,,,"/>
+<approved hash="104,1,48.26,115.57,BAT1,+,N$1,,,"/>
+<approved hash="104,1,50.8,115.57,BAT2,-,N$1,,,"/>
+<approved hash="104,1,60.96,115.57,BAT2,+,VBAT,,,"/>
+<approved hash="106,1,190.5,105.41,DO,,,,,"/>
+<approved hash="113,1,30.48,115.646,D1,,,,,"/>
+</errors>
 </schematic>
 </drawing>
 </eagle>
