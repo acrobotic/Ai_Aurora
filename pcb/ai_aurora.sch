@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="7.1.0">
+<eagle version="6.5.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -14921,12 +14921,11 @@ This library includes discrete semiconductor devices such as diodes, FETs, etc.
 <wire x1="0.889" y1="1.27" x2="0.889" y2="-1.27" width="0.254" layer="21"/>
 <wire x1="-1.905" y1="0" x2="-2.54" y2="0" width="0.254" layer="21"/>
 <wire x1="1.905" y1="0.127" x2="2.54" y2="0.127" width="0.254" layer="21"/>
-<pad name="A" x="-3.81" y="0" drill="1" diameter="1.9812"/>
-<pad name="C" x="3.81" y="0" drill="1" diameter="1.9812"/>
+<pad name="A" x="-3.81" y="0" drill="1.016" diameter="2.032"/>
+<pad name="C" x="3.81" y="0" drill="1.016" diameter="2.032"/>
 <text x="-3.175" y="1.905" size="1.27" layer="25" font="vector" ratio="10">&gt;NAME</text>
 </package>
 <package name="TO-220">
-<description>&lt;b&gt;TO 220 Vertical&lt;/b&gt; Package works with various parts including N-Channel MOSFET SparkFun SKU: COM-10213</description>
 <wire x1="-5.08" y1="2.032" x2="-5.08" y2="-0.381" width="0.2032" layer="21"/>
 <wire x1="5.08" y1="2.032" x2="5.08" y2="-0.381" width="0.2032" layer="21"/>
 <wire x1="5.08" y1="2.032" x2="-5.08" y2="2.032" width="0.2032" layer="21"/>
@@ -14940,9 +14939,9 @@ This library includes discrete semiconductor devices such as diodes, FETs, etc.
 <wire x1="-4.191" y1="-1.27" x2="-3.81" y2="-1.27" width="0.2032" layer="21"/>
 <wire x1="4.191" y1="-1.27" x2="3.81" y2="-1.27" width="0.2032" layer="21"/>
 <rectangle x1="-5.08" y1="2.032" x2="5.08" y2="3.048" layer="21"/>
-<pad name="1" x="-2.54" y="0" drill="1.016" shape="long" rot="R90"/>
-<pad name="2" x="0" y="0" drill="1.016" shape="long" rot="R90"/>
-<pad name="3" x="2.54" y="0" drill="1.016" shape="long" rot="R90"/>
+<pad name="1" x="-2.54" y="0" drill="1.016" diameter="1.524" shape="long" rot="R90"/>
+<pad name="2" x="0" y="0" drill="1.016" diameter="1.524" shape="long" rot="R90"/>
+<pad name="3" x="2.54" y="0" drill="1.016" diameter="1.524" shape="long" rot="R90"/>
 <text x="-5.08" y="3.556" size="1.27" layer="25" font="vector" ratio="10">&gt;NAME</text>
 </package>
 <package name="SOT-23">
@@ -15562,6 +15561,12 @@ This library includes power ICs such as regulators, power symbols (e.g., GND, 5V
 <text x="-1.905" y="2.54" size="1.524" layer="96" font="vector" ratio="10">VIN</text>
 <pin name="VIN" x="0" y="0" visible="off" length="short" direction="sup" rot="R90"/>
 </symbol>
+<symbol name="VPANEL">
+<wire x1="0.762" y1="1.27" x2="0" y2="2.54" width="0.254" layer="94"/>
+<wire x1="0" y1="2.54" x2="-0.762" y2="1.27" width="0.254" layer="94"/>
+<text x="-3.175" y="2.54" size="1.524" layer="96" font="vector" ratio="10">VPANEL</text>
+<pin name="VPANEL" x="0" y="0" visible="off" length="short" direction="sup" rot="R90"/>
+</symbol>
 </symbols>
 <devicesets>
 <deviceset name="GND" prefix="GND">
@@ -15600,6 +15605,18 @@ This library includes power ICs such as regulators, power symbols (e.g., GND, 5V
 </device>
 </devices>
 </deviceset>
+<deviceset name="VPANEL">
+<gates>
+<gate name="G$1" symbol="VPANEL" x="0" y="0"/>
+</gates>
+<devices>
+<device name="">
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
 </devicesets>
 </library>
 <library name="Ai_Electromechanical">
@@ -15622,8 +15639,8 @@ This library includes mechanical hardware (e.g., stand-offs), buttons, switches,
 <wire x1="-2" y1="14" x2="-2" y2="12" width="0.127" layer="51"/>
 <wire x1="-2" y1="14" x2="2" y2="14" width="0.127" layer="51"/>
 <wire x1="2" y1="14" x2="2" y2="12" width="0.127" layer="51"/>
-<pad name="-" x="0" y="-19" drill="1.3"/>
-<pad name="+" x="0" y="19" drill="1.3"/>
+<pad name="-" x="0" y="-19" drill="1.27" diameter="2.032"/>
+<pad name="+" x="0" y="19" drill="1.27" diameter="2.032"/>
 <hole x="8" y="19" drill="2"/>
 </package>
 <package name="BATTERY-AAA">
@@ -15914,6 +15931,32 @@ Keying posts into board</description>
 <text x="-2.54" y="1.524" size="1.27" layer="25" font="vector" ratio="10">&gt;NAME</text>
 <wire x1="2.54" y1="1.27" x2="2.54" y2="-1.27" width="0.2032" layer="21"/>
 </package>
+<package name="1X01-PANEL">
+<pad name="1" x="0" y="0" drill="2.54" diameter="4.191" rot="R90"/>
+<circle x="0" y="0" radius="2.159" width="0.127" layer="21"/>
+<circle x="0" y="0" radius="2.159" width="0.127" layer="22"/>
+<polygon width="0.2032" layer="1">
+<vertex x="0" y="2.032" curve="90"/>
+<vertex x="-2.032" y="0" curve="270"/>
+</polygon>
+<polygon width="0.2032" layer="16">
+<vertex x="0" y="2.032" curve="90"/>
+<vertex x="-2.032" y="0" curve="270"/>
+</polygon>
+</package>
+<package name="1X01-TERM">
+<pad name="1" x="0" y="0" drill="4.2164" diameter="5.588" rot="R90"/>
+<circle x="0" y="0" radius="2.921" width="0.127" layer="21"/>
+<circle x="0" y="0" radius="2.921" width="0.127" layer="22"/>
+<polygon width="0.2032" layer="1">
+<vertex x="0" y="2.794" curve="90"/>
+<vertex x="-2.794" y="0" curve="270"/>
+</polygon>
+<polygon width="0.2032" layer="16">
+<vertex x="0" y="2.794" curve="90"/>
+<vertex x="-2.794" y="0" curve="270"/>
+</polygon>
+</package>
 </packages>
 <symbols>
 <symbol name="1X02">
@@ -15951,6 +15994,11 @@ Keying posts into board</description>
 <pin name="1" x="-1.27" y="-2.54" visible="pin" length="short" direction="pas" rot="R90"/>
 <pin name="2" x="1.27" y="-2.54" visible="pin" length="short" direction="pas" rot="R90"/>
 <wire x1="1.27" y1="0" x2="1.27" y2="1.27" width="0.1524" layer="94"/>
+</symbol>
+<symbol name="1X01-TERM">
+<text x="-2.54" y="2.54" size="1.524" layer="95" ratio="15">&gt;NAME</text>
+<pin name="1" x="0" y="0" visible="off" length="point" rot="R180"/>
+<circle x="0" y="0" radius="1.778" width="1.524" layer="94"/>
 </symbol>
 </symbols>
 <devicesets>
@@ -16048,6 +16096,29 @@ Keying posts into board</description>
 <connects>
 <connect gate="G$1" pin="1" pad="1"/>
 <connect gate="G$1" pin="2" pad="2"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="1X01-TERM">
+<gates>
+<gate name="G$1" symbol="1X01-TERM" x="0" y="0"/>
+</gates>
+<devices>
+<device name="-SCREW" package="1X01-TERM">
+<connects>
+<connect gate="G$1" pin="1" pad="1"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="-PANEL" package="1X01-PANEL">
+<connects>
+<connect gate="G$1" pin="1" pad="1"/>
 </connects>
 <technologies>
 <technology name=""/>
@@ -16188,8 +16259,8 @@ This library includes LEDs of all shapes and sizes.
 <part name="C1" library="Ai_Passives" deviceset="CAP" device="025X050"/>
 <part name="C2" library="Ai_Passives" deviceset="CAP" device="025X050"/>
 <part name="D1" library="Ai_DiscreteSemis" deviceset="DIODE" device="TH-1N914"/>
-<part name="J1" library="Ai_Connectors" deviceset="1X02" device="ST"/>
-<part name="J2" library="Ai_Connectors" deviceset="2X03" device=""/>
+<part name="SOLAR-IN" library="Ai_Connectors" deviceset="1X02" device="ST"/>
+<part name="ISP" library="Ai_Connectors" deviceset="2X03" device=""/>
 <part name="U$1" library="Ai_Power" deviceset="VIN" device=""/>
 <part name="GND1" library="Ai_Power" deviceset="GND" device=""/>
 <part name="U$3" library="Ai_Power" deviceset="VBAT" device=""/>
@@ -16203,7 +16274,7 @@ This library includes LEDs of all shapes and sizes.
 <part name="U$5" library="Ai_Miscellany" deviceset="AI-LOGO" device="M"/>
 <part name="R1" library="Ai_Passives" deviceset="RES" device="AXIAL-0.4" value="10K"/>
 <part name="GND9" library="Ai_Power" deviceset="GND" device=""/>
-<part name="S1" library="Ai_Electromechanical" deviceset="SW-SPST" device="TH06X06"/>
+<part name="RESET" library="Ai_Electromechanical" deviceset="SW-SPST" device="TH06X06"/>
 <part name="U$6" library="Ai_Power" deviceset="VBAT" device=""/>
 <part name="VR1" library="Ai_Passives" deviceset="POT" device="05X05" value="1M"/>
 <part name="JP1" library="Ai_Connectors" deviceset="1X02-PJ" device=""/>
@@ -16212,10 +16283,17 @@ This library includes LEDs of all shapes and sizes.
 <part name="Q1" library="Ai_DiscreteSemis" deviceset="FET-NMOS" device="-FQP30N06L" value="FQP30N06L"/>
 <part name="U$8" library="Ai_Power" deviceset="VBAT" device=""/>
 <part name="GND6" library="Ai_Power" deviceset="GND" device=""/>
-<part name="S2" library="Ai_Electromechanical" deviceset="SW-SPST" device="TH06X06"/>
+<part name="SET" library="Ai_Electromechanical" deviceset="SW-SPST" device="TH06X06"/>
 <part name="R3" library="Ai_Passives" deviceset="RES" device="AXIAL-0.4" value="10K"/>
 <part name="GND7" library="Ai_Power" deviceset="GND" device=""/>
 <part name="R4" library="Ai_Passives" deviceset="RES" device="AXIAL-0.4" value="100K"/>
+<part name="PANEL+" library="Ai_Connectors" deviceset="1X01-TERM" device="-PANEL"/>
+<part name="PANEL-" library="Ai_Connectors" deviceset="1X01-TERM" device="-PANEL"/>
+<part name="U$11" library="Ai_Power" deviceset="VPANEL" device=""/>
+<part name="U$12" library="Ai_Power" deviceset="VPANEL" device=""/>
+<part name="GND8" library="Ai_Power" deviceset="GND" device=""/>
+<part name="M2" library="Ai_Connectors" deviceset="1X01-TERM" device="-PANEL"/>
+<part name="M3" library="Ai_Connectors" deviceset="1X01-TERM" device="-PANEL"/>
 </parts>
 <sheets>
 <sheet>
@@ -16234,8 +16312,8 @@ This library includes LEDs of all shapes and sizes.
 <instance part="C1" gate="G$1" x="232.41" y="118.11"/>
 <instance part="C2" gate="G$1" x="240.03" y="118.11"/>
 <instance part="D1" gate="G$1" x="30.48" y="115.57"/>
-<instance part="J1" gate="G$1" x="20.32" y="113.03" rot="MR180"/>
-<instance part="J2" gate="G$1" x="135.89" y="121.92" rot="R180"/>
+<instance part="SOLAR-IN" gate="G$1" x="20.32" y="113.03" rot="MR180"/>
+<instance part="ISP" gate="G$1" x="135.89" y="121.92" rot="R180"/>
 <instance part="U$1" gate="G$1" x="35.56" y="118.11"/>
 <instance part="GND1" gate="GND" x="27.94" y="107.95"/>
 <instance part="U$3" gate="G$1" x="63.5" y="118.11"/>
@@ -16249,7 +16327,7 @@ This library includes LEDs of all shapes and sizes.
 <instance part="U$5" gate="G$1" x="139.7" y="17.78"/>
 <instance part="R1" gate="G$1" x="151.13" y="77.47" rot="R90"/>
 <instance part="GND9" gate="GND" x="151.13" y="68.58"/>
-<instance part="S1" gate="G$1" x="151.13" y="88.9" rot="MR270"/>
+<instance part="RESET" gate="G$1" x="151.13" y="88.9" rot="MR270"/>
 <instance part="U$6" gate="G$1" x="146.05" y="127"/>
 <instance part="VR1" gate="G$1" x="87.63" y="120.65" rot="R180"/>
 <instance part="JP1" gate="G$1" x="87.63" y="109.22" rot="MR0"/>
@@ -16258,10 +16336,17 @@ This library includes LEDs of all shapes and sizes.
 <instance part="Q1" gate="G$1" x="191.77" y="74.93"/>
 <instance part="U$8" gate="G$1" x="191.77" y="87.63"/>
 <instance part="GND6" gate="GND" x="191.77" y="58.42"/>
-<instance part="S2" gate="G$1" x="92.71" y="74.93"/>
+<instance part="SET" gate="G$1" x="92.71" y="74.93"/>
 <instance part="R3" gate="G$1" x="85.09" y="67.31" rot="R90"/>
 <instance part="GND7" gate="GND" x="85.09" y="58.42"/>
 <instance part="R4" gate="G$1" x="182.88" y="68.58" rot="R90"/>
+<instance part="PANEL+" gate="G$1" x="132.08" y="46.99"/>
+<instance part="PANEL-" gate="G$1" x="142.24" y="46.99"/>
+<instance part="U$11" gate="G$1" x="26.67" y="118.11"/>
+<instance part="U$12" gate="G$1" x="132.08" y="52.07"/>
+<instance part="GND8" gate="GND" x="142.24" y="40.64"/>
+<instance part="M2" gate="G$1" x="166.37" y="44.45"/>
+<instance part="M3" gate="G$1" x="172.72" y="44.45"/>
 </instances>
 <busses>
 </busses>
@@ -16275,7 +16360,7 @@ This library includes LEDs of all shapes and sizes.
 <segment>
 <wire x1="27.94" y1="113.03" x2="27.94" y2="110.49" width="0.1524" layer="91"/>
 <pinref part="GND1" gate="GND" pin="GND"/>
-<pinref part="J1" gate="G$1" pin="2"/>
+<pinref part="SOLAR-IN" gate="G$1" pin="2"/>
 <wire x1="25.4" y1="113.03" x2="27.94" y2="113.03" width="0.1524" layer="91"/>
 </segment>
 <segment>
@@ -16290,7 +16375,7 @@ This library includes LEDs of all shapes and sizes.
 <wire x1="119.38" y1="92.71" x2="119.38" y2="95.25" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="J2" gate="G$1" pin="6"/>
+<pinref part="ISP" gate="G$1" pin="6"/>
 <wire x1="143.51" y1="119.38" x2="146.05" y2="119.38" width="0.1524" layer="91"/>
 <pinref part="GND4" gate="GND" pin="GND"/>
 <wire x1="146.05" y1="119.38" x2="146.05" y2="116.84" width="0.1524" layer="91"/>
@@ -16315,6 +16400,11 @@ This library includes LEDs of all shapes and sizes.
 <pinref part="GND7" gate="GND" pin="GND"/>
 <wire x1="85.09" y1="60.96" x2="85.09" y2="62.23" width="0.1524" layer="91"/>
 </segment>
+<segment>
+<pinref part="GND8" gate="GND" pin="GND"/>
+<pinref part="PANEL-" gate="G$1" pin="1"/>
+<wire x1="142.24" y1="43.18" x2="142.24" y2="46.99" width="0.1524" layer="91"/>
+</segment>
 </net>
 <net name="VBAT" class="0">
 <segment>
@@ -16324,7 +16414,7 @@ This library includes LEDs of all shapes and sizes.
 <pinref part="U$3" gate="G$1" pin="VBAT"/>
 </segment>
 <segment>
-<pinref part="J2" gate="G$1" pin="2"/>
+<pinref part="ISP" gate="G$1" pin="2"/>
 <wire x1="143.51" y1="124.46" x2="146.05" y2="124.46" width="0.1524" layer="91"/>
 <pinref part="U$6" gate="G$1" pin="VBAT"/>
 <wire x1="146.05" y1="124.46" x2="146.05" y2="127" width="0.1524" layer="91"/>
@@ -16388,7 +16478,7 @@ This library includes LEDs of all shapes and sizes.
 </net>
 <net name="MISO/LDR" class="0">
 <segment>
-<pinref part="J2" gate="G$1" pin="1"/>
+<pinref part="ISP" gate="G$1" pin="1"/>
 <wire x1="128.27" y1="124.46" x2="125.73" y2="124.46" width="0.1524" layer="91"/>
 <label x="125.73" y="124.46" size="1.27" layer="95" font="vector" ratio="10" rot="R180" xref="yes"/>
 </segment>
@@ -16405,7 +16495,7 @@ This library includes LEDs of all shapes and sizes.
 </net>
 <net name="SCK/BATT" class="0">
 <segment>
-<pinref part="J2" gate="G$1" pin="3"/>
+<pinref part="ISP" gate="G$1" pin="3"/>
 <wire x1="128.27" y1="121.92" x2="125.73" y2="121.92" width="0.1524" layer="91"/>
 <label x="125.73" y="121.92" size="1.27" layer="95" font="vector" ratio="10" rot="R180" xref="yes"/>
 </segment>
@@ -16422,7 +16512,7 @@ This library includes LEDs of all shapes and sizes.
 </net>
 <net name="RST" class="0">
 <segment>
-<pinref part="J2" gate="G$1" pin="5"/>
+<pinref part="ISP" gate="G$1" pin="5"/>
 <label x="125.73" y="119.38" size="1.27" layer="95" font="vector" ratio="10" rot="R180" xref="yes"/>
 <wire x1="128.27" y1="119.38" x2="125.73" y2="119.38" width="0.1524" layer="91"/>
 </segment>
@@ -16431,14 +16521,14 @@ This library includes LEDs of all shapes and sizes.
 <label x="154.94" y="95.25" size="1.27" layer="95" font="vector" ratio="10" xref="yes"/>
 <wire x1="149.86" y1="95.25" x2="151.13" y2="95.25" width="0.1524" layer="91"/>
 <wire x1="151.13" y1="95.25" x2="154.94" y2="95.25" width="0.1524" layer="91"/>
-<pinref part="S1" gate="G$1" pin="A@1"/>
+<pinref part="RESET" gate="G$1" pin="A@1"/>
 <wire x1="151.13" y1="95.25" x2="151.13" y2="93.98" width="0.1524" layer="91"/>
 <junction x="151.13" y="95.25"/>
 </segment>
 </net>
 <net name="MOSI/SET" class="0">
 <segment>
-<pinref part="J2" gate="G$1" pin="4"/>
+<pinref part="ISP" gate="G$1" pin="4"/>
 <wire x1="143.51" y1="121.92" x2="146.05" y2="121.92" width="0.1524" layer="91"/>
 <label x="146.05" y="121.92" size="1.27" layer="95" font="vector" ratio="10" xref="yes"/>
 </segment>
@@ -16450,6 +16540,7 @@ This library includes LEDs of all shapes and sizes.
 <segment>
 <wire x1="97.79" y1="74.93" x2="100.33" y2="74.93" width="0.1524" layer="91"/>
 <label x="100.33" y="74.93" size="1.27" layer="95" font="vector" ratio="10" xref="yes"/>
+<pinref part="SET" gate="G$1" pin="B@1"/>
 </segment>
 </net>
 <net name="DI" class="0">
@@ -16471,13 +16562,6 @@ This library includes LEDs of all shapes and sizes.
 <wire x1="48.26" y1="115.57" x2="50.8" y2="115.57" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="N$2" class="0">
-<segment>
-<pinref part="J1" gate="G$1" pin="1"/>
-<pinref part="D1" gate="G$1" pin="A"/>
-<wire x1="25.4" y1="115.57" x2="27.94" y2="115.57" width="0.1524" layer="91"/>
-</segment>
-</net>
 <net name="N$4" class="0">
 <segment>
 <wire x1="190.5" y1="113.03" x2="187.96" y2="113.03" width="0.1524" layer="91"/>
@@ -16496,7 +16580,7 @@ This library includes LEDs of all shapes and sizes.
 </net>
 <net name="N$3" class="0">
 <segment>
-<pinref part="S1" gate="G$1" pin="B@1"/>
+<pinref part="RESET" gate="G$1" pin="B@1"/>
 <pinref part="R1" gate="G$1" pin="2"/>
 <wire x1="151.13" y1="83.82" x2="151.13" y2="82.55" width="0.1524" layer="91"/>
 </segment>
@@ -16567,8 +16651,24 @@ This library includes LEDs of all shapes and sizes.
 <segment>
 <pinref part="R3" gate="G$1" pin="2"/>
 <wire x1="85.09" y1="72.39" x2="85.09" y2="74.93" width="0.1524" layer="91"/>
-<pinref part="S2" gate="G$1" pin="A@1"/>
+<pinref part="SET" gate="G$1" pin="A@1"/>
 <wire x1="85.09" y1="74.93" x2="87.63" y2="74.93" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="VPANEL" class="0">
+<segment>
+<pinref part="SOLAR-IN" gate="G$1" pin="1"/>
+<pinref part="D1" gate="G$1" pin="A"/>
+<wire x1="25.4" y1="115.57" x2="26.67" y2="115.57" width="0.1524" layer="91"/>
+<pinref part="U$11" gate="G$1" pin="VPANEL"/>
+<wire x1="26.67" y1="115.57" x2="27.94" y2="115.57" width="0.1524" layer="91"/>
+<wire x1="26.67" y1="118.11" x2="26.67" y2="115.57" width="0.1524" layer="91"/>
+<junction x="26.67" y="115.57"/>
+</segment>
+<segment>
+<pinref part="PANEL+" gate="G$1" pin="1"/>
+<pinref part="U$12" gate="G$1" pin="VPANEL"/>
+<wire x1="132.08" y1="46.99" x2="132.08" y2="52.07" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
