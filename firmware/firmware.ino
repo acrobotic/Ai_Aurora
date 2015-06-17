@@ -42,21 +42,21 @@ void setup(){
   strip.begin();
   strip.show(); // Initialize all pixels to 'off'
   strip.setBrightness(100); 
-  sbi(GIMSK,PCIE);   // Turn on Pin Change interrupt
-  sbi(PCMSK,PCINT1); // Which pins are affected by the interrupt
+ // sbi(GIMSK,PCIE);   // Turn on Pin Change interrupt
+ // sbi(PCMSK,PCINT1); // Which pins are affected by the interrupt
 }
 
 void loop(){
-  if (sleeping)
-    system_sleep();
-
-  if (analogRead(aPinPwr) >= pwrMin)
-    powered = true;
-  else
-  {
-    sleeping = true;
-    powered = false;
-  }
+//  if (sleeping)
+//    system_sleep();
+//
+//  if (analogRead(aPinPwr) >= pwrMin)
+//    powered = true;
+//  else
+//  {
+//    sleeping = true;
+//    powered = false;
+//  }
   
   //while( (!sleeping)&&(powered) )
   while(1)
